@@ -20,13 +20,13 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
-# init
+# Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Kernel
 TARGET_PREBUILT_KERNEL := device/bq/vegetalte/kernel
 TARGET_CUSTOM_KERNEL_HEADERS := device/bq/vegetalte/include
-BOARD_KERNEL_CMDLINE := androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -42,17 +42,18 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 
 # TWRP-Specific
-TARGET_RECOVERY_FSTAB := device/bq/vegetalte/recovery/etc/recovery.fstab
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-DEVICE_RESOLUTION := 720x1280
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TARGET_RECOVERY_FSTAB := device/bq/vegetalte/recovery/etc/twrp.fstab
+TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
-BOARD_SUPPRESS_SECURE_ERASE := true
+TW_INCLUDE_CRYPTO := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_TARGET_USES_QCOM_BSP := true
+TW_NEW_ION_HEAP := true
 TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
-TW_INCLUDE_CRYPTO := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+BOARD_SUPPRESS_SECURE_ERASE := true
