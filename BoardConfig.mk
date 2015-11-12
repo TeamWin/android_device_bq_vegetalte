@@ -57,3 +57,7 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 BOARD_SUPPRESS_SECURE_ERASE := true
+
+# Include tzdata for recovery
+PRODUCT_COPY_FILES += \
+    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
